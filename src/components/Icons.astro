@@ -1,0 +1,21 @@
+---
+import { getIconPath, type IconName } from '../data/icons';
+
+interface Props {
+  name: IconName | 'details';
+  class?: string;
+  id?: string;
+}
+
+const { name, class: className = 'w-5 h-5', id } = Astro.props;
+const iconName = name === 'details' ? 'external' : name;
+const iconPath = getIconPath(iconName);
+---
+
+<span
+  id={id}
+  class:list={['icon', className]}
+  style={`--icon-url: url(${iconPath})`}
+  role="img"
+  aria-hidden="true"
+/>

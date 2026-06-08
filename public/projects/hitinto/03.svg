@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#080f1a"/>
+      <stop offset="100%" stop-color="#140818"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop stop-color="#FF4FD8"/>
+      <stop offset="1" stop-color="#5EEBFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <text x="640" y="310" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="48" font-weight="700" fill="#F5F7FA">HitInto</text>
+  <text x="640" y="370" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#A9B0C3">Projectile mechanics  screenshot 3</text>
+  <rect x="440" y="410" width="400" height="4" fill="url(#accent)" rx="2"/>
+  <text x="640" y="460" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#FF4FD8">Replace: public/projects/hitinto/03.webp</text>
+</svg>

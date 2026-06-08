@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kanoel7.github.io/KyryloMazanyi/sitemap.xml

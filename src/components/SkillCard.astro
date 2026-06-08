@@ -1,0 +1,135 @@
+---
+interface Props {
+  title: string;
+  skills: string[];
+  index?: number;
+}
+
+const { title, skills, index = 0 } = Astro.props;
+
+const accents = ['cyan', 'pink', 'violet'] as const;
+const accent = accents[index % accents.length];
+---
+
+<article
+  class={`skill-card skill-card--${accent} reveal group rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md transition-all duration-300 ease-out sm:p-6`}
+>
+  <div class="mb-4 flex items-center gap-3">
+    <span class={`skill-card-dot skill-card-dot--${accent}`} aria-hidden="true"></span>
+    <h3 class="text-base font-semibold tracking-tight text-text sm:text-lg">{title}</h3>
+  </div>
+  <ul class="flex flex-wrap gap-2" role="list">
+    {skills.map((skill) => (
+      <li>
+        <span class={`skill-chip skill-chip--${accent}`}>{skill}</span>
+      </li>
+    ))}
+  </ul>
+</article>
+
+<style>
+  .skill-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .skill-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .skill-card--cyan:hover {
+    border-color: rgba(94, 235, 255, 0.3);
+    box-shadow: 0 8px 28px rgba(94, 235, 255, 0.08);
+  }
+
+  .skill-card--pink:hover {
+    border-color: rgba(255, 79, 216, 0.3);
+    box-shadow: 0 8px 28px rgba(255, 79, 216, 0.08);
+  }
+
+  .skill-card--violet:hover {
+    border-color: rgba(155, 92, 255, 0.3);
+    box-shadow: 0 8px 28px rgba(155, 92, 255, 0.08);
+  }
+
+  .skill-card-dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 9999px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .skill-card-dot--cyan { background: #5eebff; }
+  .skill-card-dot--pink { background: #ff4fd8; }
+  .skill-card-dot--violet { background: #9b5cff; }
+
+  .skill-card:hover .skill-card-dot {
+    transform: scale(1.35);
+  }
+
+  .skill-card--cyan:hover .skill-card-dot {
+    box-shadow: 0 0 12px rgba(94, 235, 255, 0.6);
+  }
+
+  .skill-card--pink:hover .skill-card-dot {
+    box-shadow: 0 0 12px rgba(255, 79, 216, 0.6);
+  }
+
+  .skill-card--violet:hover .skill-card-dot {
+    box-shadow: 0 0 12px rgba(155, 92, 255, 0.6);
+  }
+
+  .skill-chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #a9b0c3;
+    transition: all 0.25s ease;
+  }
+
+  .skill-card:hover .skill-chip {
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .skill-chip:hover {
+    transform: translateY(-2px) scale(1.03);
+    color: #f5f7fa;
+  }
+
+  .skill-chip--cyan:hover {
+    border-color: rgba(94, 235, 255, 0.35);
+    background: rgba(94, 235, 255, 0.08);
+    box-shadow: 0 4px 14px rgba(94, 235, 255, 0.12);
+  }
+
+  .skill-chip--pink:hover {
+    border-color: rgba(255, 79, 216, 0.35);
+    background: rgba(255, 79, 216, 0.08);
+    box-shadow: 0 4px 14px rgba(255, 79, 216, 0.12);
+  }
+
+  .skill-chip--violet:hover {
+    border-color: rgba(155, 92, 255, 0.35);
+    background: rgba(155, 92, 255, 0.08);
+    box-shadow: 0 4px 14px rgba(155, 92, 255, 0.12);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-card,
+    .skill-chip,
+    .skill-card-dot {
+      transition: none;
+    }
+
+    .skill-card:hover,
+    .skill-chip:hover {
+      transform: none;
+    }
+  }
+</style>

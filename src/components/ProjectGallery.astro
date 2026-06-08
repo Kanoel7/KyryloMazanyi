@@ -1,0 +1,221 @@
+---
+import Icons from './Icons.astro';
+import type { ProjectImage } from '../data/profile';
+
+interface Props {
+  projectId: string;
+  projectName: string;
+  images: ProjectImage[];
+}
+
+const { projectId, projectName, images } = Astro.props;
+const galleryId = `gallery-${projectId}`;
+const slideCount = images.length;
+const hasMultiple = slideCount > 1;
+---
+
+{slideCount === 0 ? (
+  <div
+    class="flex aspect-video w-full items-center justify-center border-b border-white/10 bg-white/[0.03] text-sm text-muted"
+    role="img"
+    aria-label={`${projectName} — no screenshots yet`}
+  >
+    Add screenshots in profile.ts → images[]
+  </div>
+) : (
+  <div
+    class="project-gallery group/gallery relative w-full"
+    data-gallery={galleryId}
+    data-slide-count={slideCount}
+    role="region"
+    aria-label={`${projectName} screenshots`}
+    aria-roledescription={hasMultiple ? 'carousel' : undefined}
+  >
+    <div
+      class:list={[
+        'gallery-track flex overflow-x-auto',
+        hasMultiple && 'snap-x snap-mandatory scroll-smooth',
+      ]}
+      tabindex={hasMultiple ? 0 : -1}
+      aria-live="polite"
+    >
+      {images.map((image, index) => (
+        <figure
+          class="gallery-slide relative min-w-full shrink-0 grow-0 basis-full"
+          data-slide-index={index}
+        >
+          <img
+            src={image.src}
+            alt={image.alt}
+            width={1280}
+            height={720}
+            class="aspect-video w-full object-cover"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding={index === 0 ? 'sync' : 'async'}
+            fetchpriority={index === 0 ? 'high' : 'auto'}
+          />
+        </figure>
+      ))}
+    </div>
+
+    {hasMultiple && (
+      <>
+        <button
+          type="button"
+          class="gallery-prev absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-bg/80 text-text opacity-80 backdrop-blur-md transition-all duration-200 hover:border-cyan/40 hover:text-cyan focus-visible:opacity-100 sm:left-4 sm:h-11 sm:w-11 sm:opacity-0 sm:group-hover/gallery:opacity-100"
+          aria-label="Previous screenshot"
+          data-gallery-prev={galleryId}
+        >
+          <Icons name="chevron-left" class="w-5 h-5" />
+        </button>
+
+        <button
+          type="button"
+          class="gallery-next absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-bg/80 text-text opacity-80 backdrop-blur-md transition-all duration-200 hover:border-cyan/40 hover:text-cyan focus-visible:opacity-100 sm:right-4 sm:h-11 sm:w-11 sm:opacity-0 sm:group-hover/gallery:opacity-100"
+          aria-label="Next screenshot"
+          data-gallery-next={galleryId}
+        >
+          <Icons name="chevron-right" class="w-5 h-5" />
+        </button>
+
+        <div
+          class="absolute bottom-3 left-1/2 z-10 flex max-w-[90%] -translate-x-1/2 flex-wrap justify-center gap-1.5 rounded-full border border-white/10 bg-bg/70 px-2.5 py-2 backdrop-blur-md"
+          role="tablist"
+          aria-label="Screenshot navigation"
+        >
+          {images.map((image, index) => (
+            <button
+              type="button"
+              class="gallery-dot h-2 w-2 shrink-0 rounded-full bg-white/30 transition-all duration-200 hover:bg-white/50 aria-[current=true]:w-5 aria-[current=true]:bg-gradient-to-r aria-[current=true]:from-cyan aria-[current=true]:to-pink"
+              role="tab"
+              aria-label={`Screenshot ${index + 1} of ${slideCount}: ${image.alt}`}
+              aria-selected={index === 0 ? 'true' : 'false'}
+              data-gallery-dot={galleryId}
+              data-index={index}
+            />
+          ))}
+        </div>
+
+        <span
+          class="gallery-counter absolute right-3 top-3 z-10 rounded-full border border-white/10 bg-bg/70 px-2.5 py-1 text-xs font-medium text-muted backdrop-blur-md sm:text-sm"
+          aria-hidden="true"
+          data-gallery-counter={galleryId}
+          data-total={slideCount}
+        >
+          1 / {slideCount}
+        </span>
+      </>
+    )}
+  </div>
+)}
+
+<style>
+  .gallery-track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .gallery-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-track {
+      scroll-behavior: auto;
+    }
+  }
+</style>
+
+<script>
+  function initGalleries() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('[data-gallery]:not([data-gallery-ready])').forEach((gallery) => {
+      const id = gallery.getAttribute('data-gallery');
+      if (!id) return;
+
+      const total = Number(gallery.getAttribute('data-slide-count') ?? 0);
+      if (total <= 1) {
+        gallery.setAttribute('data-gallery-ready', 'true');
+        return;
+      }
+
+      const track = gallery.querySelector('.gallery-track') as HTMLElement | null;
+      const prevBtn = gallery.querySelector(`[data-gallery-prev="${id}"]`) as HTMLButtonElement | null;
+      const nextBtn = gallery.querySelector(`[data-gallery-next="${id}"]`) as HTMLButtonElement | null;
+      const dots = gallery.querySelectorAll(`[data-gallery-dot="${id}"]`);
+      const counter = gallery.querySelector(`[data-gallery-counter="${id}"]`);
+
+      if (!track) return;
+
+      let currentIndex = 0;
+
+      function getSlideWidth() {
+        return track!.clientWidth;
+      }
+
+      function clampIndex(index: number) {
+        return Math.max(0, Math.min(index, total - 1));
+      }
+
+      function goTo(index: number) {
+        currentIndex = clampIndex(index);
+        const left = currentIndex * getSlideWidth();
+        track!.scrollTo({ left, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        updateUI();
+      }
+
+      function updateUI() {
+        dots.forEach((dot, i) => {
+          const isActive = i === currentIndex;
+          dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+        if (counter) counter.textContent = `${currentIndex + 1} / ${total}`;
+      }
+
+      function syncFromScroll() {
+        const width = getSlideWidth();
+        if (width === 0) return;
+        const index = clampIndex(Math.round(track!.scrollLeft / width));
+        if (index !== currentIndex) {
+          currentIndex = index;
+          updateUI();
+        }
+      }
+
+      prevBtn?.addEventListener('click', () => goTo(currentIndex - 1));
+      nextBtn?.addEventListener('click', () => goTo(currentIndex + 1));
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const index = Number(dot.getAttribute('data-index'));
+          if (!Number.isNaN(index)) goTo(index);
+        });
+      });
+
+      track.addEventListener('scroll', syncFromScroll, { passive: true });
+
+      track.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          goTo(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          goTo(currentIndex + 1);
+        }
+      });
+
+      const onResize = () => {
+        goTo(currentIndex);
+      };
+      window.addEventListener('resize', onResize);
+
+      gallery.setAttribute('data-gallery-ready', 'true');
+      updateUI();
+    });
+  }
+
+  initGalleries();
+  document.addEventListener('astro:page-load', initGalleries);
+</script>

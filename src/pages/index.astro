@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SkillCard from '../components/SkillCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Contact from '../components/Contact.astro';
+import { profile } from '../data/profile';
+---
+
+<Layout>
+  <div id="top">
+    <Header />
+    <main id="main-content">
+      <Hero />
+
+      <!-- Summary -->
+      <section id="summary" class="section-padding" aria-labelledby="summary-heading">
+        <div class="container-main">
+          <SectionHeading title="Summary" id="summary-heading" />
+          <p class="reveal max-w-3xl text-lg leading-relaxed text-muted">
+            {profile.summary}
+          </p>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="section-padding border-t border-white/5" aria-labelledby="skills-heading">
+        <div class="container-main">
+          <SectionHeading
+            title="Core Skills"
+            subtitle="Gameplay-focused UE5 stack — scan-friendly by category."
+            id="skills-heading"
+          />
+          <div class="skills-grid grid gap-4 sm:grid-cols-2 lg:gap-5">
+            {profile.skillGroups.map((group, index) => (
+              <SkillCard title={group.title} skills={group.skills} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Languages & Availability -->
+      <section id="languages" class="section-padding border-t border-white/5" aria-labelledby="languages-heading">
+        <div class="container-main">
+          <SectionHeading title="Languages & Availability" id="languages-heading" />
+          <div class="grid gap-6 md:grid-cols-2">
+            <article class="glass-card glass-card-hover reveal rounded-2xl p-6 sm:p-8">
+              <h3 class="mb-4 text-lg font-semibold text-text">Languages</h3>
+              <ul class="space-y-3" role="list">
+                {profile.languages.map((lang) => (
+                  <li class="flex items-center gap-3 text-base text-muted">
+                    <span class="h-1.5 w-1.5 rounded-full bg-cyan" aria-hidden="true"></span>
+                    {lang}
+                  </li>
+                ))}
+              </ul>
+            </article>
+            <article class="glass-card glass-card-hover reveal rounded-2xl p-6 sm:p-8">
+              <h3 class="mb-4 text-lg font-semibold text-text">Availability</h3>
+              <ul class="space-y-3" role="list">
+                {profile.availability.map((item) => (
+                  <li class="flex items-center gap-3 text-base text-muted">
+                    <span class="h-1.5 w-1.5 rounded-full bg-pink" aria-hidden="true"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section-padding border-t border-white/5" aria-labelledby="projects-heading">
+        <div class="container-main">
+          <SectionHeading
+            title="Projects"
+            subtitle="3 solo shipped prototypes with packaged Windows builds and measurable results."
+            id="projects-heading"
+          />
+          <div class="space-y-10 lg:space-y-14">
+            {profile.projects.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="section-padding border-t border-white/5" aria-labelledby="education-heading">
+        <div class="container-main">
+          <SectionHeading title="Education" id="education-heading" />
+          <article class="glass-card glass-card-hover reveal max-w-2xl rounded-2xl p-6 sm:p-8">
+            <h3 class="text-xl font-semibold text-text">{profile.education.institution}</h3>
+            <p class="mt-2 text-lg text-muted">{profile.education.degree}</p>
+            <p class="mt-1 text-base font-medium text-cyan">{profile.education.year}</p>
+            <p class="mt-1 text-base text-muted">{profile.education.location}</p>
+            <p class="mt-4 text-base leading-relaxed text-muted/90">{profile.education.note}</p>
+          </article>
+        </div>
+      </section>
+
+      <Contact />
+    </main>
+
+    <footer class="border-t border-white/5 py-8" role="contentinfo">
+      <div class="container-main text-center text-sm text-muted">
+        <p>© 2026 {profile.name} · UE5 Gameplay Developer · {profile.location}</p>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  document.querySelectorAll('[data-placeholder="true"]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      if (el.getAttribute('href') === '#') {
+        e.preventDefault();
+      }
+    });
+  });
+</script>

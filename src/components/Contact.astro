@@ -1,0 +1,103 @@
+---
+import Icons from './Icons.astro';
+import { profile, resolveUrl, isPlaceholder, getContactSocialLinks } from '../data/profile';
+
+const cvUrl = profile.cvUrl ?? '#';
+const cvPlaceholder = profile.cvUrl === null;
+const contactSocial = getContactSocialLinks();
+---
+
+<section id="contact" class="section-padding" aria-labelledby="contact-heading">
+  <div class="container-main">
+    <div class="gradient-border reveal overflow-hidden rounded-3xl">
+      <div class="relative px-6 py-12 text-center sm:px-10 sm:py-16 lg:px-14 lg:py-20">
+        <h2 id="contact-heading" class="text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl">
+          {profile.contact.heading}
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+          {profile.contact.text}
+        </p>
+
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
+          <a href={`mailto:${profile.email}`} class="btn-primary w-full sm:w-auto">
+            <Icons name="email" class="w-5 h-5" />
+            Email me
+          </a>
+
+          <button
+            type="button"
+            id="copy-email-btn"
+            class="copy-email-btn btn-secondary w-full sm:w-auto"
+            aria-label="Copy email address"
+            data-email={profile.email}
+            data-state="idle"
+          >
+            <Icons name="copy" class="copy-email-copy w-5 h-5" />
+            <Icons name="check" class="copy-email-check w-5 h-5" />
+            <span id="copy-label">Copy email</span>
+          </button>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+          {contactSocial.map((link) => (
+            <a
+              href={resolveUrl(link.url)}
+              class="btn-secondary text-sm"
+              target={isPlaceholder(link.url) ? undefined : '_blank'}
+              rel={isPlaceholder(link.url) ? undefined : 'noopener noreferrer'}
+              aria-label={isPlaceholder(link.url) ? `${link.label} (link pending)` : link.label}
+              data-placeholder={isPlaceholder(link.url) ? 'true' : undefined}
+            >
+              <Icons name={link.icon} class="w-4 h-4" />
+              {link.label}
+            </a>
+          ))}
+          <a href={`mailto:${profile.email}`} class="btn-secondary text-sm">
+            <Icons name="email" class="w-4 h-4" />
+            Email
+          </a>
+          <a
+            href={cvUrl}
+            class="btn-secondary text-sm"
+            download={cvPlaceholder ? undefined : ''}
+            aria-label={cvPlaceholder ? 'Download CV (file pending)' : 'Download CV'}
+          >
+            <Icons name="cv" class="w-4 h-4" />
+            Download CV
+          </a>
+        </div>
+
+        <p class="mt-8 text-base text-muted">
+          <a href={`mailto:${profile.email}`} class="text-cyan transition-colors hover:text-pink">
+            {profile.email}
+          </a>
+          <span class="mx-2 text-border">·</span>
+          {profile.location}, {profile.timezone}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.getElementById('copy-email-btn');
+  const copyLabel = document.getElementById('copy-label');
+
+  copyBtn?.addEventListener('click', async () => {
+    const email = copyBtn.getAttribute('data-email');
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      copyBtn.setAttribute('data-state', 'copied');
+      if (copyLabel) copyLabel.textContent = 'Copied!';
+
+      setTimeout(() => {
+        copyBtn.setAttribute('data-state', 'idle');
+        if (copyLabel) copyLabel.textContent = 'Copy email';
+      }, 2000);
+    } catch {
+      if (copyLabel) copyLabel.textContent = 'Copy failed';
+    }
+  });
+</script>

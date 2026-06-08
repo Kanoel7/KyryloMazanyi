@@ -1,0 +1,83 @@
+---
+import MetricCard from './MetricCard.astro';
+import Icons from './Icons.astro';
+import { profile } from '../data/profile';
+
+const cvUrl = profile.cvUrl ?? '#';
+const cvPlaceholder = profile.cvUrl === null;
+---
+
+<section
+  class="hero relative flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden pb-16 pt-28 sm:min-h-[calc(100dvh-4.5rem)] sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36"
+  aria-labelledby="hero-title"
+>
+  <div class="hero-glow pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+  <div class="container-main relative w-full">
+    <div class="mx-auto flex w-full max-w-3xl flex-col items-center text-center lg:max-w-4xl">
+      <!-- Badge -->
+      <div class="reveal flex flex-wrap items-center justify-center gap-2">
+        <span class="inline-flex items-center rounded-full border border-cyan/25 bg-cyan/5 px-4 py-1.5 text-sm font-medium text-cyan">
+          {profile.hero.badgePrimary}
+        </span>
+        <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-muted">
+          {profile.hero.badgeSecondary}
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1
+        id="hero-title"
+        class="reveal mt-6 w-full text-balance text-[2rem] font-extrabold leading-[1.12] tracking-tight text-text sm:mt-7 sm:text-[2.75rem] lg:text-[3.5rem] lg:leading-[1.1]"
+      >
+        {profile.title}
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="reveal mt-5 w-full max-w-2xl text-pretty text-base leading-relaxed text-muted sm:mt-6 sm:text-lg lg:text-xl">
+        {profile.hero.subtitle}
+      </p>
+
+      <!-- Credibility chips -->
+      <ul class="reveal mt-5 flex w-full max-w-2xl flex-wrap items-center justify-center gap-2 sm:mt-6" role="list">
+        {profile.hero.credibility.map((item) => (
+          <li>
+            <span class="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-text/75 sm:text-sm">
+              {item}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTAs -->
+      <div class="reveal mt-8 flex w-full flex-wrap items-center justify-center gap-3">
+        <a href="#projects" class="btn-primary w-full sm:w-auto">View Projects</a>
+        <a href="#contact" class="btn-secondary w-full sm:w-auto">Contact Me</a>
+        <a
+          href={cvUrl}
+          class="btn-ghost w-full sm:w-auto"
+          download={cvPlaceholder ? undefined : ''}
+          aria-label={cvPlaceholder ? 'Download CV (file pending)' : 'Download CV'}
+        >
+          <Icons name="cv" class="w-4 h-4" />
+          Download CV
+        </a>
+      </div>
+
+      <!-- Metrics -->
+      <div class="reveal mt-10 grid w-full grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        {profile.hero.metrics.map((metric) => (
+          <MetricCard value={metric.value} label={metric.label} centered />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-glow {
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 0%, rgba(94, 235, 255, 0.1), transparent 65%),
+      radial-gradient(ellipse 50% 35% at 80% 60%, rgba(255, 79, 216, 0.06), transparent 60%);
+  }
+</style>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c0c14"/>
+      <stop offset="100%" stop-color="#180e1c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop stop-color="#FF4FD8"/>
+      <stop offset="1" stop-color="#5EEBFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <text x="640" y="300" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="700" fill="#F5F7FA">Horror Prototype</text>
+  <text x="640" y="360" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#A9B0C3">Dialogue system UI  screenshot 2</text>
+  <rect x="390" y="400" width="500" height="4" fill="url(#accent)" rx="2"/>
+  <text x="640" y="450" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#FF4FD8">Replace: public/projects/horror/02.webp</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1520"/>
+      <stop offset="100%" stop-color="#100a1a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop stop-color="#5EEBFF"/>
+      <stop offset="1" stop-color="#FF4FD8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <text x="640" y="310" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="48" font-weight="700" fill="#F5F7FA">HitInto</text>
+  <text x="640" y="370" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#A9B0C3">Packaged build  screenshot 4</text>
+  <rect x="440" y="410" width="400" height="4" fill="url(#accent)" rx="2"/>
+</svg>
