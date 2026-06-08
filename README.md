@@ -1,12 +1,13 @@
-# Kyrylo Mazanyi — Portfolio
+Kyrylo Mazanyi — UE5 Gameplay Developer Portfolio
 
-**Live:** [kanoel7.github.io/KyryloMazanyi](https://kanoel7.github.io/KyryloMazanyi/)
+Personal one-page portfolio website for presenting my skills, projects, and experience as a Junior Unreal Engine 5 Gameplay Developer.
 
-```bash
-npm install
-npm run dev
-```
+The website is designed to help recruiters, studios, and hiring managers quickly understand what I can build in Unreal Engine 5: gameplay systems, C++/Blueprint architecture, multiplayer-ready prototypes, AI behavior, data-driven mechanics, UI, animation pipelines, and packaged Windows builds.
 
-Push to `main` → auto-deploy via GitHub Actions.
+Live Website
 
-**Enable hosting once:** Repo → Settings → Pages → Source: **GitHub Actions**.
+Portfolio: TODO: add deployed website link
+
+About Me
+
+I am a Junior Unreal Engine 5 Gameplay Developer based in Nitra, Slovakia, working from the CET time zone.

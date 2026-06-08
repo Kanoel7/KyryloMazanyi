@@ -203,20 +203,28 @@ export const profile = {
       tags: ['UE5', 'C++', 'Blueprints', 'Multiplayer', 'DataTables'],
       proves: 'HitInto proves multiplayer/gameplay systems.',
       images: projectImages('hitinto', [
-        { file: '01.svg', alt: 'HitInto — 4-player co-op gameplay' },
-        { file: '02.svg', alt: 'HitInto — multiplayer upgrade system' },
-        { file: '03.svg', alt: 'HitInto — replicated projectile mechanics' },
-        { file: '04.svg', alt: 'HitInto — packaged Windows build' },
+        { file: '01.png', alt: '' },
+        { file: '02.png', alt: '' },
+        { file: '03.png', alt: '' },
+        { file: '04.png', alt: '' },
+        { file: '05.png', alt: '' },
+        { file: '06.png', alt: '' },
+        { file: '07.png', alt: '' },
+        { file: '08.png', alt: '' },
+        { file: '09.png', alt: '' },
+        { file: '10.png', alt: '' },
+        { file: '11.png', alt: '' },
+        { file: '12.png', alt: '' },
+        { file: '13.png', alt: '' }
       ]),
       links: [
         // TODO: insert real Itch.io URL
-        { label: 'Itch.io', url: null, type: 'itch' },
+        { label: 'Itch.io', url: 'https://kanoel77.itch.io/teleportgame', type: 'itch' },
         // TODO: insert real YouTube URL
-        { label: 'YouTube', url: null, type: 'youtube' },
+        { label: 'YouTube', url: 'https://www.youtube.com/@KyryloMazanyi', type: 'youtube' },
         // TODO: insert real ArtStation URL
-        //{ label: 'ArtStation', url: null, type: 'artstation' },
+        { label: 'ArtStation', url: 'https://www.youtube.com/@KyryloMazanyi', type: 'artstation' }
         // TODO: insert real GitHub URL
-        { label: 'GitHub', url: null, type: 'github' },
       ],
       accent: 'cyan',
     },
