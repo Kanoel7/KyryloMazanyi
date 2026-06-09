@@ -203,15 +203,15 @@ export const profile = {
       tags: ['UE5', 'C++', 'Blueprints', 'Multiplayer', 'DataTables'],
       proves: 'HitInto proves multiplayer/gameplay systems.',
       images: projectImages('hitinto', [
-        { file: '01.png', alt: '' },
-        { file: '02.png', alt: '' },
-        { file: '03.png', alt: '' },
-        { file: '04.png', alt: '' },
-        { file: '05.png', alt: '' },
-        { file: '06.png', alt: '' },
-        { file: '07.png', alt: '' },
-        { file: '08.png', alt: '' },
-        { file: '09.png', alt: '' },
+        { file: '1.png', alt: '' },
+        { file: '2.png', alt: '' },
+        { file: '3.png', alt: '' },
+        { file: '4.png', alt: '' },
+        { file: '5.png', alt: '' },
+        { file: '6.png', alt: '' },
+        { file: '7.png', alt: '' },
+        { file: '8.png', alt: '' },
+        { file: '9.png', alt: '' },
         { file: '10.png', alt: '' },
         { file: '11.png', alt: '' },
         { file: '12.png', alt: '' },
@@ -223,7 +223,7 @@ export const profile = {
         // TODO: insert real YouTube URL
         { label: 'YouTube', url: 'https://www.youtube.com/@KyryloMazanyi', type: 'youtube' },
         // TODO: insert real ArtStation URL
-        { label: 'ArtStation', url: 'https://www.youtube.com/@KyryloMazanyi', type: 'artstation' }
+        { label: 'ArtStation', url: 'https://kanoel.artstation.com/albums/14979956', type: 'artstation' }
         // TODO: insert real GitHub URL
       ],
       accent: 'cyan',
@@ -254,18 +254,25 @@ export const profile = {
       tags: ['UE5', 'C++', 'Blueprints', 'AI', 'DataTables', 'UMG'],
       proves: 'Horror Prototype proves reusable architecture, AI, narrative systems.',
       images: projectImages('horror', [
-        { file: '01.svg', alt: 'Horror Prototype — story atmosphere' },
-        // add more: { file: '02.webp', alt: '...' },
+        { file: '1.png', alt: '' },
+        { file: '2.png', alt: '' },
+        { file: '3.png', alt: '' },
+        { file: '4.png', alt: '' },
+        { file: '5.png', alt: '' },
+        { file: '6.png', alt: '' },
+        { file: '7.png', alt: '' },
+        { file: '8.png', alt: '' },
+        { file: '9.png', alt: '' },
+        { file: '10.png', alt: '' },
+        { file: '11.png', alt: '' },
+        { file: '12.png', alt: '' },
+        { file: '13.png', alt: '' }
       ]),
       links: [
-        // TODO: insert real Itch.io URL
-        { label: 'Itch.io', url: null, type: 'itch' },
         // TODO: insert real YouTube URL
-        { label: 'YouTube', url: null, type: 'youtube' },
+        { label: 'YouTube', url: 'https://www.youtube.com/watch?v=k3AeC5DK7Yk', type: 'youtube' },
         // TODO: insert real ArtStation URL
-        { label: 'ArtStation', url: null, type: 'artstation' },
-        // TODO: insert real GitHub URL
-        { label: 'GitHub', url: null, type: 'github' },
+        { label: 'ArtStation', url: 'https://kanoel.artstation.com/albums/14901225', type: 'artstation' }
       ],
       accent: 'pink',
     },
@@ -303,13 +310,11 @@ export const profile = {
       ]),
       links: [
         // TODO: insert real Itch.io URL
-        { label: 'Itch.io', url: null, type: 'itch' },
+        { label: 'Itch.io', url: 'https://kanoel77.itch.io/alchemy-again', type: 'itch' },
         // TODO: insert real YouTube URL
-        { label: 'YouTube', url: null, type: 'youtube' },
+        { label: 'YouTube', url: 'https://www.youtube.com/watch?v=k3AeC5DK7Yk', type: 'youtube' },
         // TODO: insert real ArtStation URL
-        { label: 'ArtStation', url: null, type: 'artstation' },
-        // TODO: insert real GitHub URL
-        { label: 'GitHub', url: null, type: 'github' },
+        { label: 'ArtStation', url: 'https://kanoel.artstation.com/albums/14911920', type: 'artstation' }
       ],
       accent: 'violet',
     },
@@ -355,13 +360,13 @@ export const profile = {
   social: [
     { label: 'GitHub', url: 'https://github.com/Kanoel7', icon: 'github' },
     // TODO: insert real LinkedIn URL
-    { label: 'LinkedIn', url: null, icon: 'linkedin' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/kyrylo-mazanyi-0a4177343/', icon: 'linkedin' },
     // TODO: insert real ArtStation URL
-    { label: 'ArtStation', url: null, icon: 'artstation' },
+    { label: 'ArtStation', url: 'https://kanoel.artstation.com/', icon: 'artstation' },
     // TODO: insert real YouTube URL
-    { label: 'YouTube', url: null, icon: 'youtube' },
+    { label: 'YouTube', url: 'https://www.youtube.com/@KyryloMazanyi', icon: 'youtube' },
     // TODO: insert real Itch.io URL
-    { label: 'Itch.io', url: null, icon: 'itch' },
+    { label: 'Itch.io', url: 'https://kanoel77.itch.io/', icon: 'itch' },
     // TODO: insert real Portfolio URL
     { label: 'Portfolio', url: null, icon: 'portfolio' },
   ] satisfies SocialLink[],
