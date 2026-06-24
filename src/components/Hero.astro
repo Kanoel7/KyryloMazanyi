@@ -65,7 +65,7 @@ const cvPlaceholder = profile.cvUrl === null;
       </div>
 
       <!-- Metrics -->
-      <div class="reveal mt-10 grid w-full grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      <div class="reveal mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
         {profile.hero.metrics.map((metric) => (
           <MetricCard value={metric.value} label={metric.label} centered />
         ))}
