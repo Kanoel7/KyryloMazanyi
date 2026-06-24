@@ -69,7 +69,7 @@ export interface SkillGroup {
 export const profile = {
   name: 'Kyrylo Mazanyi',
   shortName: 'KM',
-  title: 'Junior Unreal Engine 5 Gameplay Developer',
+  title: 'Junior Unreal Engine 5 Gameplay Engineer / Gameplay Programmer',
   email: 'kyrylomazaniy@gmail.com',
   location: 'Nitra, Slovakia',
   timezone: 'CET',
@@ -83,19 +83,18 @@ export const profile = {
     credibility: [
       '2+ years UE learning',
       '3 solo shipped prototypes',
-      'UE 5.5–5.7',
+      'UE 5.5–5.8',
       'C++ & Blueprints',
     ],
     metrics: [
       { value: '3', label: 'shipped solo prototypes' },
       { value: '2+', label: 'years UE-focused learning' },
-      { value: 'UE 5.5–5.7', label: 'engine versions' },
       { value: 'Remote/CET', label: 'availability' },
     ],
   },
 
   summary:
-    'Junior UE5 Gameplay Developer based in Nitra, Slovakia. I focus on building gameplay features, reusable systems and packaged prototypes in Unreal Engine 5 using C++ and Blueprints. My work covers multiplayer-ready mechanics, data-driven design, AI behavior, UI, animation pipelines and performance-aware prototyping.',
+    'Junior UE5 Gameplay Engineer with 2+ years of focused Unreal Engine learning and 3 solo shipped prototypes. Code-first gameplay programmer focused on writing clean, maintainable C++/Blueprint gameplay logic using data-driven, interface-based, and modular architecture. Strong interest in turning design ideas into smooth, interactive gameplay systems, from prototyping and implementation to polish, UI, multiplayer-ready features, AI behavior, and animation pipelines. Targeting Junior/Intern roles in gameplay programming, gameplay engineering, generalist game programming, or technical design, where I can build, iterate, and ship playable game systems in a team.',
 
   skillGroups: [
 
@@ -279,7 +278,7 @@ export const profile = {
     {
       id: 'alchemy',
       name: 'Alchemy Again',
-      role: 'Solo · 2025 Epic MegaJam · UE 5.6.1 · Windows · 1 week',
+      role: 'Solo · Puzzle2025 · Epic MegaJam · UE 5.6.1 · Windows · 1 week',
       pitch:
         'Game jam prototype with data-driven potion recipes, interaction loop, validation logic, audio pass and polished lighting.',
       bullets: [
@@ -323,7 +322,7 @@ export const profile = {
   education: {
     institution: 'Univerzity Konštantína Filozofa v Nitre',
     degree: 'Applied Informatics / Aplikovaná informatika',
-    year: '2nd year, current',
+    year: '3rd year (current)',
     location: 'Nitra, Slovakia',
     note: 'Combining university CS fundamentals with focused Unreal Engine gameplay development.',
   },
@@ -343,7 +342,7 @@ export const profile = {
 
   contact: {
     heading: 'I love creating games — and I\'d be thrilled to grow with your team.',
-    text: 'As a student gameplay developer, I\'m genuinely passionate about turning ideas into playable experiences. I\'d be happy to contribute, learn, and help bring your project to life.',
+    text: 'As a student Gameplay Engineer, I\'m genuinely passionate about turning ideas into playable experiences. I\'d be happy to contribute, learn, and help bring your project to life.',
   },
 
   nav: [
@@ -376,9 +375,9 @@ export const profile = {
   cvUrl: asset('cv/kyrylo-mazanyi-cv.pdf'),
 
   seo: {
-    title: 'Kyrylo Mazanyi — Junior UE5 Gameplay Developer',
+    title: 'Kyrylo Mazanyi — Junior UE5 Gameplay Engineer',
     description:
-      'Portfolio of Kyrylo Mazanyi, Junior Unreal Engine 5 Gameplay Developer focused on C++, Blueprints, gameplay systems, multiplayer-ready prototypes, AI and data-driven UE5 design.',
+      'Portfolio of Kyrylo Mazanyi, Junior Unreal Engine 5 GGameplay Engineer focused on C++, Blueprints, gameplay systems, multiplayer-ready prototypes, AI and data-driven UE5 design.',
     knowsAbout: [
       'Unreal Engine 5',
       'C++',
