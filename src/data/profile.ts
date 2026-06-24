@@ -69,7 +69,7 @@ export interface SkillGroup {
 export const profile = {
   name: 'Kyrylo Mazanyi',
   shortName: 'KM',
-  title: 'Junior Unreal Engine 5 Gameplay Engineer / Gameplay Programmer',
+  title: 'Kyrylo Mazanyi - Junior Unreal Engine 5 Gameplay Engineer / Gameplay Programmer',
   email: 'kyrylomazaniy@gmail.com',
   location: 'Nitra, Slovakia',
   timezone: 'CET',
