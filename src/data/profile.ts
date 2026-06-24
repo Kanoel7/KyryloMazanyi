@@ -311,7 +311,7 @@ export const profile = {
         // TODO: insert real Itch.io URL
         { label: 'Itch.io', url: 'https://kanoel77.itch.io/alchemy-again', type: 'itch' },
         // TODO: insert real YouTube URL
-        { label: 'YouTube', url: 'https://www.youtube.com/watch?v=k3AeC5DK7Yk', type: 'youtube' },
+        { label: 'YouTube', url: 'https://www.youtube.com/watch?v=NrOy5O9Bkto', type: 'youtube' },
         // TODO: insert real ArtStation URL
         { label: 'ArtStation', url: 'https://kanoel.artstation.com/albums/14911920', type: 'artstation' }
       ],
